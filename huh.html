@@ -24,7 +24,7 @@
         t = document.querySelector('textarea')
         t.addEventListener("keypress", () => {
             ta = event.target
-            kc = event.charCode
+            kc = event.key.charCodeAt(0)
             kt = "phonetic"
 
 
