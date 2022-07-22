@@ -6,16 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>voshufila</title>
     <style>
+        @font-face {
+            font-family:Waheed;
+            src:url(fonts/MVAWaheed.ttf);
+            font-weight:400;
+            font-display:auto
+        }
         textarea {
             direction: rtl;
             text-align: right;
+            font-family: Waheed;
         }
     </style>
 </head>
 <body>
-    <p>with div, event passed, loggin just event<p>
     <textarea name="" id="" cols="30" rows="10"></textarea>
-    <div>blank</div>
+    <div></div>
     <script>
 
         var keyboards = { 
@@ -26,13 +32,14 @@
         t = document.querySelector('textarea')
         d = document.querySelector('div')
         t.addEventListener("keypress", (event) => {
-            
+            d.innerHTML = "pressed"
+            console.log(event)
             ta = event.target
             kc = event.key.charCodeAt(0)
-            d.innerHTML = event
             kt = "phonetic"
 
-
+            d.innerHTML = kc
+            
             if ( event.key != "Enter" && keyboards[kt][kc] ) {
                 event.preventDefault()
                 ss = ta.selectionStart
