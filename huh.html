@@ -13,8 +13,9 @@
     </style>
 </head>
 <body>
+    <p>with div<p>
     <textarea name="" id="" cols="30" rows="10"></textarea>
-    <div></div>
+    <div>blank</div>
     <script>
 
         var keyboards = { 
@@ -32,7 +33,7 @@
             kt = "phonetic"
 
 
-            if ( keyboards[kt][kc] ) {
+            if ( event.key != "Enter" && keyboards[kt][kc] ) {
                 event.preventDefault()
                 ss = ta.selectionStart
                 se = ta.selectionEnd
