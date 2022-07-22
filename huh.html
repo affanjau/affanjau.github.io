@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-    <p>with div<p>
+    <p>with div, event passed, loggin just event<p>
     <textarea name="" id="" cols="30" rows="10"></textarea>
     <div>blank</div>
     <script>
@@ -25,11 +25,11 @@
 
         t = document.querySelector('textarea')
         d = document.querySelector('div')
-        t.addEventListener("keypress", () => {
+        t.addEventListener("keypress", (event) => {
             
             ta = event.target
             kc = event.key.charCodeAt(0)
-            d.innerHTML = event.key
+            d.innerHTML = event
             kt = "phonetic"
 
 
