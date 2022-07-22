@@ -14,6 +14,7 @@
 </head>
 <body>
     <textarea name="" id="" cols="30" rows="10"></textarea>
+    <div></div>
     <script>
 
         var keyboards = { 
@@ -22,9 +23,12 @@
             };
 
         t = document.querySelector('textarea')
+        d = document.querySelector('div')
         t.addEventListener("keypress", () => {
+            
             ta = event.target
             kc = event.key.charCodeAt(0)
+            d.innerHTML = kc
             kt = "phonetic"
 
 
