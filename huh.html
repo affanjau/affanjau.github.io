@@ -31,26 +31,22 @@
 
         t = document.querySelector('textarea')
         d = document.querySelector('div')
-        t.addEventListener("keypress", onpress)
-        
-        function onpress(){
-            d.innerHTML = "pressed"
-        }
-//         t.addEventListener("keypress", (event) => {
-//             d.innerHTML = "pressed"
-//             console.log(event)
-//             ta = event.target
-//             kc = event.key.charCodeAt(0)
-//             kt = "phonetic"
 
-//             d.innerHTML = kc
+        t.addEventListener("keydown", (event) => {
+       
+            console.log(event)
+            ta = event.target
+            kc = event.key.charCodeAt(0)
+            kt = "phonetic"
+
+            d.innerHTML = kc
             
-//             if ( event.key != "Enter" && keyboards[kt][kc] ) {
-//                 event.preventDefault()
-//                 ss = ta.selectionStart
-//                 se = ta.selectionEnd
-//                 ta.setRangeText(keyboards[kt][kc], ss, se, "end") 
-//             }
+            if ( event.key != "Enter" && keyboards[kt][kc] ) {
+                event.preventDefault()
+                ss = ta.selectionStart
+                se = ta.selectionEnd
+                ta.setRangeText(keyboards[kt][kc], ss, se, "end") 
+            }
         });
     </script>
 </body>
