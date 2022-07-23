@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>voshufila</title>
+    <title>fila</title>
     <style>
         @font-face {
             font-family:Waheed;
@@ -20,7 +20,7 @@
     </style>
 </head>
 <body>
-    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <textarea class="thaana" name="" id="" cols="30" rows="10"></textarea>
     <script>
 
         var keyboards = { 
@@ -28,14 +28,22 @@
                 'typewriter' : { 33 : '!', 34 : '؛', 35: '#', 36 : '$', 37 : '%', 38 : '&', 39 : 'ﷲ', 40 : ')', 41 : '(', 42 : '*', 43 : '+', 44 : 'ށ', 45 : '-', 46 : 'ޓ', 47 : 'ޯ', 58: 'ޡ', 59 : 'ފ', 60 : '\\', 61 : '=', 62 : 'ޞ', 63 : '؟', 64 : '@', 65 : '<', 66 : 'ޟ', 67 : 'ޏ', 68 : '.', 69 : '“', 70 : '،', 71 : '"', 72 : 'ޥ', 73 : 'ޣ' ,74 : 'ޢ', 75 : 'ޘ' ,76 : 'ޚ', 77 : 'ޝ', 78 : 'ޛ', 79 : 'ޠ', 80 : 'ޙ', 81 : '×', 82 : '/', 83 : '>', 84 : ':', 85 : 'ޜ', 86 : 'ޗ', 87 : '’', 88 : 'ޕ', 89 : 'ޤ', 90 : 'ޖ', 91 : 'ލ', 92 : ']', 93 : '[', 94 : '^', 95: '_', 96 : '`', 97 : 'ި', 98 : 'ޅ', 99 : 'ސ', 100 : 'ް', 101 : 'ާ', 102 : 'ަ', 103 : 'ެ', 104 : 'ވ', 105 : 'މ', 106 : 'އ', 107 : 'ނ', 108 : 'ކ', 109 : 'ބ', 110 : 'ދ', 111 : 'ތ', 112 : 'ހ', 113 : 'ޫ', 114 : 'ީ', 115 : 'ު', 116 : 'ޭ', 117 : 'ރ', 118 : 'ޔ', 119 : 'ޮ', 120 : 'ޑ', 121 : 'ގ', 122 : 'ޒ', 123: '÷', 124 : '}', 125 : '{', 126 : '~'}
             };
 
-        t = document.querySelector('textarea')
+        t = document.querySelectorAll('.thaana')
 
-        t.addEventListener("beforeinput", (event) => { 
-            ta = event.target 
-            kt = "phonetic" 
+        t.forEach(el => {
+            el.addEventListener("beforeinput", _beforeinput)
+            
+        });
+
+        function _beforeinput(event) {
+            ta = event.target
             ed = event.data
             if (ed && ed.length == 1 && ed != " " && event.data) {
-                kc = ed.charCodeAt(0)        
+                kc = ed.charCodeAt(0)
+
+                kt = "phonetic"
+                if ( ta.classList.contains("typewriter") )
+                    kt = "typewriter"
 
                 if ( keyboards[kt][kc] ) { 
                     event.preventDefault()
@@ -44,7 +52,8 @@
                     ta.setRangeText(keyboards[kt][kc], ss, se, "end")  
                 }
             }
-        });
+        }
+
     </script>
 </body>
 </html>
