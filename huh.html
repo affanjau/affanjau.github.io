@@ -32,20 +32,19 @@
         t = document.querySelector('textarea')
         d = document.querySelector('div')
 
-        t.addEventListener("keydown", (event) => {
-       
-            console.log(event)
-            ta = event.target
-            kc = event.key.charCodeAt(0)
-            kt = "phonetic"
+        t.addEventListener("beforeinput", (event) => { 
+            ta = event.target 
+            kt = "phonetic" 
+            ed = event.data
+            if (ed && ed.length == 1 && ed != " " && event.data) {
+                kc = ed.charCodeAt(0)        
 
-            d.innerHTML = kc
-            
-            if ( event.key != "Enter" && keyboards[kt][kc] ) {
-                event.preventDefault()
-                ss = ta.selectionStart
-                se = ta.selectionEnd
-                ta.setRangeText(keyboards[kt][kc], ss, se, "end") 
+                if ( keyboards[kt][kc] ) { 
+                    event.preventDefault()
+                    ss = ta.selectionStart
+                    se = ta.selectionEnd 
+                    ta.setRangeText(keyboards[kt][kc], ss, se, "end")  
+                }
             }
         });
     </script>
